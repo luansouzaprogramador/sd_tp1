@@ -1,6 +1,8 @@
-# Executáveis dentro de subpastas ou na raiz
-**/emissor
-**/receptor
+# Executáveis
+**/signals/emissor
+**/signals/receptor
+
+**/pipes/produtor_consumidor
 
 # Executáveis do Windows
 *.exe

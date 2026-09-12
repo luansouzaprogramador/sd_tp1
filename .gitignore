@@ -1,0 +1,18 @@
+# Executáveis dentro de subpastas ou na raiz
+**/emissor
+**/receptor
+
+# Executáveis do Windows
+*.exe
+
+# Arquivos de objeto intermediários
+*.o
+*.obj
+
+# Arquivos temporários e de sistema
+*.swp
+*~
+.DS_Store
+
+# Configurações do VSCode
+.vscode/

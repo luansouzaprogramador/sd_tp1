@@ -31,7 +31,7 @@ static void produtor(int fd_escrita, int quantidade) {
 
         ssize_t escrito = write(fd_escrita, buf, TAM_MSG);
         if (escrito != TAM_MSG) {
-            perror("write");
+            perror("[Produtor] write");
             break;
         }
     }
@@ -40,7 +40,7 @@ static void produtor(int fd_escrita, int quantidade) {
     memset(buf, 0, TAM_MSG);
     snprintf(buf, TAM_MSG, "%d", 0);
     if (write(fd_escrita, buf, TAM_MSG) != TAM_MSG) {
-        perror("write");
+        perror("[Produtor] write");
     }
 
     close(fd_escrita);
@@ -56,7 +56,7 @@ static void consumidor(int fd_leitura) {
 
         lido = read(fd_leitura, buf, TAM_MSG);
         if (lido < 0) {
-            perror("read");
+            perror("[Consumidor] read");
             break;
         }
         if (lido == 0) {
@@ -65,7 +65,7 @@ static void consumidor(int fd_leitura) {
         }
         if (lido != TAM_MSG) {
             // Leitura parcial (nao esperado neste caso)
-            fprintf(stderr, "Aviso: leitura parcial (%zd bytes)\n", lido);
+            fprintf(stderr, "[Consumidor] Aviso: leitura parcial (%zd bytes)\n", lido);
             break;
         }
 
@@ -75,11 +75,11 @@ static void consumidor(int fd_leitura) {
             // Sinal de fim enviado pelo produtor
             break;
         }
-
+        
         if (eh_primo(valor)) {
-            printf("%d e primo\n", valor);
+            printf("[Consumidor] PRIMO %d\n", valor);
         } else {
-            printf("%d nao e primo\n", valor);
+            printf("[Consumidor] COMPOSTO %d\n", valor);
         }
     }
 
